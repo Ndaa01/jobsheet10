@@ -32,15 +32,33 @@ public class BioskopWithScanner {
                     
                     penonton[baris - 1] [kolom - 1] = nama;
 
-                    System.out.print("Input penonton lainnya? (y/n): ");
-                    String next = sc2.nextLine();
-                    if (next.equalsIgnoreCase("n")) {
-                        break;
+                    if (baris <= 4 && kolom <= 2) {
+                        if (penonton[baris - 1][kolom-1]==null) {
+                            penonton[baris-1][kolom-1]=nama;
+
+                            System.out.println("Input Penenonton lainnya? (y/t): ");
+                            String next = sc.nextLine();
+
+                            if (next.equalsIgnoreCase("t")) {
+                                break;
+                            }
+                        } else {
+                            System.out.println("Pilihan Kursi terlah terisi");
+                        }
+                    } else {
+                        System.out.println("Pilihan Kursi tidak tersedia");
                     }
                 }
-                    break;
-
+                break;
+                
                 case 2:
+                    for (int i = 0; i < penonton.length; i++) {
+                        for (int j = 0; j < penonton[0].length; j++) {
+                            if (penonton[i][j] == null) {
+                                penonton[i][j] = "***";
+                            }
+                        }
+                    }
                     System.out.println("Daftar Penonton");
                     for (int i = 0; i < penonton.length; i++) {
                         System.out.println("Penonton pada baris ke-" + (i+1) + " : " + String.join(",", penonton[i]));
@@ -55,3 +73,4 @@ public class BioskopWithScanner {
         }
     }
 }
+
